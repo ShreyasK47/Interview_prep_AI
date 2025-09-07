@@ -12,55 +12,57 @@ export const HomePage = () => {
         <div className="my-8">
           <h2 className="text-3xl text-center md:text-left md:text-6xl">
             <span className="text-outline font-extrabold md:text-8xl">
-              AI Superposwer
+              AI Superpower
             </span>
             <span className="text-gray-500 font-extrabold">
-              - A better way to
+              – Rethink how you
             </span>
             <br />
-            improve your interview chances and skills
+            win interviews and stand out
           </h2>
 
           <p className="mt-4 text-muted-foreground text-sm">
-            Boost your interview skills and increase your sucess rate with 
-            AI_driven insights. Discover a smart way to prepare, practice, and
-            stand out.
+            Your personal interview coach, powered by AI. Practice with
+            real-time feedback, simulate tricky questions, and sharpen the
+            skills recruiters actually look for. More confidence. Better
+            outcomes.
           </p>
         </div>
 
-         <div className="flex w-full items-center justify-evenly md:px-12 md:py-16 md:items-center md:justify-end gap-12">
+        <div className="flex w-full items-center justify-evenly md:px-12 md:py-16 md:items-center md:justify-end gap-12">
           <p className="text-3xl font-semibold text-gray-900 text-center">
-            250k+
+            300k+
             <span className="block text-xl text-muted-foreground font-normal">
-              Offers Recieved
+              Job offers unlocked
             </span>
           </p>
           <p className="text-3xl font-semibold text-gray-900 text-center">
-            1.2M+
+            1.5M+
             <span className="block text-xl text-muted-foreground font-normal">
-              Interview Aced
+              Mock interviews completed
             </span>
           </p>
         </div>
 
-        {/* image sectiomn */}
-
+        {/* image section */}
         <div className="w-full mt-4 rounded-xl bg-gray-100 h-[420px] drop-shadow-md overflow-hidden relative">
           <img
             src="assets/img/hero.jpg"
-            alt=""
+            alt="Interview practice with AI"
             className="w-full h-full object-cover"
           />
 
           <div className="absolute top-4 left-4 px-4 py-2 rounded-md bg-white/40 backdrop-blur-md">
-            Inteviews Copilot&copy;
+            Interview Copilot&copy;
           </div>
 
           <div className="hidden md:block absolute w-80 bottom-4 right-4 px-4 py-2 rounded-md bg-white/60 backdrop-blur-md">
-            <h2 className="text-neutral-800 font-semibold">Developer</h2>
+            <h2 className="text-neutral-800 font-semibold">
+              Meet your AI mentor
+            </h2>
             <p className="text-sm text-neutral-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              distinctio natus, quos voluptatibus magni sapiente.
+              Get tailored feedback, question insights, and strategies designed
+              to match your role and industry. Practice smarter, not harder.
             </p>
 
             <Button className="mt-3">
@@ -70,8 +72,8 @@ export const HomePage = () => {
         </div>
       </Container>
 
-      {/*marqueue section*/}
-      <div className="w-full my-12 ">
+      {/* marquee section */}
+      <div className="w-full my-12">
         <Marquee pauseOnHover>
           <MarqueImg img="/assets/img/logo/firebase.png" />
           <MarqueImg img="/assets/img/logo/meet.png" />
@@ -83,26 +85,27 @@ export const HomePage = () => {
           <MarqueImg img="/assets/img/logo/microsoft.png" />
         </Marquee>
       </div>
+
       <Container className="py-8 space-y-8">
         <h2 className="tracking-wide text-xl text-gray-800 font-semibold">
-          Unleash your potential with personalized AI insights and targeted
-          interview practice.
+          Unleash your potential with AI-powered insights and tailored practice
+          for every interview.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
           <div className="col-span-1 md:col-span-3">
             <img
               src="/assets/img/office.jpg"
-              alt=""
+              alt="AI interview preparation"
               className="w-full max-h-96 rounded-md object-cover"
             />
           </div>
 
           <div className="col-span-1 md:col-span-2 gap-8 max-h-96 min-h-96 w-full flex flex-col items-center justify-center text-center">
             <p className="text-center text-muted-foreground">
-              Transform the way you prepare, gain confidence, and boost your
-              chances of landing your dream job. Let AI be your edge in
-              today&apos;s competitive job market.
+              Step into your next interview prepared and confident. From coding
+              rounds to behavioral questions, our AI adapts to your needs and
+              helps you shine when it matters most.
             </p>
 
             <Link to={"/generate"} className="w-full">
@@ -116,4 +119,3 @@ export const HomePage = () => {
     </div>
   )
 }
-  

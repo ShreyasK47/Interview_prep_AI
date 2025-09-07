@@ -18,7 +18,9 @@ export const Dashboard = () => {
   const { userId } = useAuth();
 
   useEffect(() => {
+    if (!userId) return;
     setLoading(true);
+
     const interviewQuery = query(
       collection(db, "interviews"),
       where("userId", "==", userId)
@@ -38,9 +40,9 @@ export const Dashboard = () => {
         setLoading(false);
       },
       (error) => {
-        console.log("Error on fetching : ", error);
-        toast.error("Error..", {
-          description: "SOmething went wrong.. Try again later..",
+        console.error("Error fetching interviews:", error);
+        toast.error("Something went wrong", {
+          description: "Unable to load your interviews. Try again later.",
         });
         setLoading(false);
       }
@@ -50,58 +52,59 @@ export const Dashboard = () => {
   }, [userId]);
 
   return (
-    <>
+    <div className="space-y-6">
+      {/* Header */}
       <div className="flex w-full items-center justify-between">
-        {/* headings */}
         <Headings
           title="Dashboard"
-          description="Create and start you AI Mock interview"
+          description="Create, manage, and review your AI-powered mock interviews."
         />
         <Link to={"/generate/create"}>
-          <Button size={"sm"}>
-            <Plus /> Add New
+          <Button size="sm" className="gap-1">
+            <Plus className="w-4 h-4" />
+            Add New
           </Button>
         </Link>
       </div>
 
-      <Separator className="my-8" />
-      {/* content section */}
+      <Separator />
 
-      <div className="md:grid md:grid-cols-3 gap-3 py-4">
+      {/* Content */}
+      <div className="md:grid md:grid-cols-3 gap-6 py-6">
         {loading ? (
           Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} className="h-24 md:h-32 rounded-md" />
+            <Skeleton
+              key={index}
+              className="h-28 md:h-36 rounded-xl bg-gray-200"
+            />
           ))
         ) : interviews.length > 0 ? (
           interviews.map((interview) => (
             <InterviewPin key={interview.id} interview={interview} />
           ))
         ) : (
-          <div className="md:col-span-3 w-full flex flex-grow items-center justify-center h-96 flex-col">
+          <div className="md:col-span-3 flex flex-col items-center justify-center text-center py-16">
             <img
               src="/assets/svg/not-found.svg"
-              className="w-44 h-44 object-contain"
-              alt=""
+              className="w-40 h-40 object-contain mb-6"
+              alt="No data"
             />
-
-            <h2 className="text-lg font-semibold text-muted-foreground">
-              No Data Found
+            <h2 className="text-lg font-semibold text-gray-800">
+              No Interviews Yet
             </h2>
-
-            <p className="w-full md:w-96 text-center text-sm text-neutral-400 mt-4">
-              There is no available data to show. Please add some new mock
-              interviews
+            <p className="max-w-md text-sm text-gray-500 mt-2">
+              You haven’t created any mock interviews. Start by generating one
+              and practice with real-time AI feedback.
             </p>
-
-            <Link to={"/generate/create"} className="mt-4">
-              <Button size={"sm"}>
-                <Plus className="min-w-5 min-h-5 mr-1" />
-                Add New
+            <Link to={"/generate/create"} className="mt-6">
+              <Button className="gap-1">
+                <Plus className="w-4 h-4" />
+                Create Interview
               </Button>
             </Link>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
