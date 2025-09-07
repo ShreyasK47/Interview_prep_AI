@@ -11,6 +11,12 @@ import { MainLayout } from "./layouts/main-layout";
 import { AboutPage } from "./routes/about";
 import { ContactPage } from "./routes/contact";
 import { ServicesPage } from "./routes/services";
+import { Generate } from "./components/generate";
+import { Dashboard } from "./routes/dashboard";
+import { CreateEditPage } from "./routes/create-edit-page";
+import { MockLoadPage } from "./routes/mock-load-page";
+import { MockInterviewPage } from "./routes/mock-interview-page";
+import { Feedback } from "./routes/feedback";
 
 const App = () => {
   return (
@@ -38,7 +44,14 @@ const App = () => {
           }>
 
           {/* add all th protected routes here */ }
-
+          <Route element ={<Generate />} path="/generate">
+            <Route index element={<Dashboard />}/>
+            <Route path=":interviewId" element={<CreateEditPage />}/>
+            <Route path="interview/:interviewId" element={<MockLoadPage />}/>
+            <Route path="interview/:interviewId/start"
+            element={<MockInterviewPage />}/>
+            <Route path="feedback/:interviewId" element={<Feedback />} />
+          </Route>
         </Route>
       </Routes>
     </Router>
