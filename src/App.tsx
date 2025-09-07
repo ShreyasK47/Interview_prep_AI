@@ -8,6 +8,9 @@ import { SignUpPage } from "./routes/sign-up";
 import { SignInPage } from "./routes/sign-in";
 import { ProtectedRoutes } from "./layouts/protected-routes";
 import { MainLayout } from "./layouts/main-layout";
+import { AboutPage } from "./routes/about";
+import { ContactPage } from "./routes/contact";
+import { ServicesPage } from "./routes/services";
 
 const App = () => {
   return (
@@ -16,6 +19,9 @@ const App = () => {
         {/*public routes*/}
         <Route element={<PublicLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/services" element={<ServicesPage />} />
         </Route>
 
         {/* authentication routes */}
